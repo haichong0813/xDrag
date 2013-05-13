@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<title>X-Drag 轻量级拖拽元素</title>
+	<style type="text/css">
+		body{margin: 0;padding: 0;background: #2D2217;font-family: Arial,Microsoft yahei;background: url('bg.jpg');}
+		.wrap{width: 1000px;margin: 0 auto;position: relative;}
+		.wrap .content{width: 100%;position: absolute;}
+
+		/*纵向拖拽*/
+		.vertical{width: 300px;overflow: hidden;margin: 200px auto;border: 2px solid #000;list-style: none;padding: 0}
+		.vertical li{height: 50px;line-height: 50px;padding: 0 15px;width: 270px;background: #000;border-bottom: 1px solid #333;cursor: move;color: #FFC000;}
+		.vertical li:hover{background: #FFC000;color: #000;}
+		.vertical .b-none{border-bottom:0 none;}
+
+		/*横向拖拽*/
+		.horizontal{width: 797px;overflow: hidden;margin: 300px auto;border: 2px solid #000;list-style: none;padding: 0}
+		.horizontal li{float: left;height: 50px;line-height: 50px;padding: 0 15px;width: 83px;overflow: hidden;background: #000;border-right: 1px solid #333;cursor: move;color: #FFC000;}
+		.horizontal li:hover{background: #FFC000;color: #000;}
+		.horizontal .b-none{border-right:0 none;}
+		.dashed{border:2px dashed  #FFC000}
+
+		/*背景遮罩*/
+		#background-overlay, #background-overlay div{width: 100%;height: 100%;position: fixed;}
+		#background-overlay div{background-repeat: repeat;background-position: 0px 0px;}
+		#background-overlay div.background-overlay-1{z-index: 2;background-image: url('background_overlay.png');}
+	</style>
+</head>
+<body>
+	<!-- 背景遮罩 -->
+	<div id="background-overlay">
+		<div class="background-overlay-1"></div>
+	</div>
+
+	<div class="wrap">
+		<div class="content">
+			<!-- 纵向拖拽 -->
+			<ul class="vertical">
+				<li class="drag">1、第七天 - 瘦人乐队</li>
+				<li class="drag">2、心在指引方向 - 龙神道乐队</li>
+				<li class="drag">3、intro开场曲 - 猴子军团</li>
+				<li class="drag">4、丢 - 布衣乐队</li>
+				<li class="drag">5、再次来临 - 谢天笑</li>
+				<li class="drag">6、忧郁洱海 - 欢庆</li>
+				<li class="drag b-none">7、杀死那个石家庄人 - 万能青年旅店</li>
+			</ul>
+			<!-- 横向拖拽 -->
+		<!-- 	<ul class="horizontal">
+				<li class="drag">第七天</li>
+				<li class="drag">心在指引方向</li>
+				<li class="drag">intro开场曲</li>
+				<li class="drag">丢</li>
+				<li class="drag">再次来临</li>
+				<li class="drag">忧郁洱海</li>
+				<li class="drag b-none">杀死那个石家庄人</li>
+			</ul> -->
+		</div>
+	</div>
+	
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script type="text/javascript" src="xDrag.js"></script>
+	<script type="text/javascript">
+		//调用
+		$('.vertical .drag').drag();
+		
+		// $('.horizontal .drag').drag({
+		// 	sort:1 //默认为0，纵向拖拽，1为横向拖拽
+		// });
+	</script>
+</body>
+</html>
