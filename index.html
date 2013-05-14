@@ -5,8 +5,8 @@
 	<title>X-Drag 轻量级拖拽元素</title>
 	<style type="text/css">
 		body{margin: 0;padding: 0;background: #2D2217;font-family: Arial,Microsoft yahei;background: url('bg.jpg');}
-		.wrap{width: 1000px;margin: 0 auto;position: relative;}
-		.wrap .content{width: 100%;position: absolute;}
+		.wrap{width: 1000px;margin: 0 auto;}
+		.wrap .content{width: 100%;}
 
 		/*纵向拖拽*/
 		.vertical{width: 300px;overflow: hidden;margin: 200px auto;border: 2px solid #000;list-style: none;padding: 0}
@@ -22,7 +22,7 @@
 		.dashed{border:2px dashed  #FFC000}
 
 		/*背景遮罩*/
-		#background-overlay, #background-overlay div{width: 100%;height: 100%;position: fixed;}
+		#background-overlay, #background-overlay div{width: 100%;height: 100%;position: fixed;z-index: -1;left: 0;top: 0}
 		#background-overlay div{background-repeat: repeat;background-position: 0px 0px;}
 		#background-overlay div.background-overlay-1{z-index: 2;background-image: url('background_overlay.png');}
 	</style>
@@ -59,11 +59,11 @@
 	</div>
 	
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-	<script type="text/javascript" src="xDrag.js"></script>
+	<script type="text/javascript" src="xDrag.min.js"></script>
 	<script type="text/javascript">
 		//调用
 		$('.vertical .drag').drag();
-		
+
 		// $('.horizontal .drag').drag({
 		// 	sort:1 //默认为0，纵向拖拽，1为横向拖拽
 		// });

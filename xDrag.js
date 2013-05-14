@@ -45,7 +45,7 @@
 					dragXY = getDragXY(event);//获取元素位置
 
 					$(this).css({
-						'position':'fixed',
+						'position':'absolute',
 						'opacity':options.opacity,
 						'left':dragXY.x,
 						'top':dragXY.y
@@ -58,7 +58,6 @@
 					height = $(this).outerHeight();//记录元素高度
 					width = $(this).outerWidth();//记录元素宽度
 					$dragging = $(this);//记录当前拖拽对象
-					// console.log($dragging);
 				});
 
 				//元素拖拽中
@@ -71,8 +70,7 @@
 						//自动吸附临界值
 						var w2 = width/2,
 						h2 = height/2;
-						console.log(rangeLRTB);
-						console.log(dragXY);
+						
 						//判断拖拽元素是否移动到容器范围外
 						if(rangeLRTB.left - w2 > dragXY.x + width || dragXY.x > rangeLRTB.right + w2 || rangeLRTB.top - h2 > dragXY.y + height || dragXY.y > rangeLRTB.bottom + h2){
 							$dragging.removeAttr('style').hide().fadeIn(200);
@@ -108,7 +106,7 @@
 
 			//获取滚动条的距离
 			function getScrollXY(){
-				return {'x':(document.body.scrollLeft || document.documentElement.scrollLeft),'y':(document.body.scrollTop || document.documentElement.scrollTop)}
+				return {'x':(document.body.scrollLeft || document.documentElement.scrollLeft),'y':(document.body.scrollTop || document.documentElement.scrollTop)};
 			}
 
 			//获取鼠标位置
@@ -129,14 +127,12 @@
 			function getDiffXY(obj,event){
 				pageXY = getPageXY(event);
 				offsetXY = getAbsPos(obj);
-				scrollXY = getScrollXY();
-				return {'x':pageXY.x - offsetXY.x,'y':pageXY.y - offsetXY.y};
+				return {'x':pageXY.x - offsetXY.x,'y':pageXY.y - offsetXY.y };
 			}
 
 			//获取元素跟随鼠标的位置
 			function getDragXY(event){
-				pageXY = getPageXY(event);
-				return {'x':pageXY.x - diffXY.x - scrollXY.x,'y':pageXY.y - diffXY.y - scrollXY.y};
+				return {'x':pageXY.x - diffXY.x,'y':pageXY.y - diffXY.y};
 			}
 
 			//获取元素相对视窗的绝对位置
@@ -176,7 +172,6 @@
 
 			//鼠标拖拽中
 			function dragMove(event){
-				// console.log($dragging);
 				if($dragging !== null){
 					pageXY = getPageXY(event);
 					dragXY = getDragXY(event);
@@ -221,5 +216,5 @@
 					}
 				}
 			}
-		}
+		};
 })(jQuery);
